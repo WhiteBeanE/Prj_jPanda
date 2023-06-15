@@ -100,12 +100,11 @@ public class RegistTalentServiceImpl implements RegistTalentService{
 		String newFileName = UUID.randomUUID() + ext;
 		
 		// System.getProperty("user.dir")은 현재 프로젝트의 경로를 출력함
-		// 프로젝트의 상위 경로에 이미지를 저장하기 위해 프로젝트명을 경로에서 자름
-		int index = System.getProperty("user.dir").indexOf(File.separator + "jPanda");
-		String path = System.getProperty("user.dir").substring(0, index);
-		
+		// File.separator는 파일 구분자로 /로 대체가 가능하지만 여러 운영 체제에서 이식성을 위해 사용
+		String path = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "uploadImage" + File.separator;
+
 		// 프로젝트상위경로/uploadImage/업로드할 이미지 파일 이름
-		String savePath = path + "/uploadImage/" + newFileName;
+		String savePath = path + newFileName;
 		
 		
 		// 해당 파일 경로에 폴더가 없을시 폴더 생성
@@ -117,7 +116,7 @@ public class RegistTalentServiceImpl implements RegistTalentService{
 		
 		// 반환할 경로
 		// /uploadImage/업로드할 이미지 파일 이름으로 경로를 반환해주는 이유는
-		// /uploadImage/**로 시작하는 경로를 요청하면 @Configuration에서 프로젝트상위경로/uploadImage/에서 찾도록 설정함
+		// /uploadImage/**로 시작하는 경로를 요청하면 WebMvcConfig에서 /static/uploadImage 경로에서 찾도록 설정함
 		String uploadPath = "/uploadImage/" + newFileName; 
 		
 		// 저장 경로로 파일 객체 생성
