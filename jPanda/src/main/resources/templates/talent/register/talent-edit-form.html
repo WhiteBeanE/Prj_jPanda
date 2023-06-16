@@ -254,7 +254,7 @@
 		</div>
 	
 		<div class="container-update-form">
-		<form id="update-form" action="/talent/talent" method="post" name="frm" onsubmit="return check()">
+		<form id="update-form" action="/talents/@${talent.talentNo}" method="post" name="frm" onsubmit="return check()">
 			<input type="hidden" name="_method" value="put">
 			<h1 class="head">재능 수정</h1>
 			<hr class="talent-hr">
@@ -409,10 +409,10 @@
 	
  // 사이드바 체크
 	$('.write-check').on('input', function(){
-		const check = '#' + $(this).attr('id') + "-check";
+		let check = '#' + $(this).attr('id') + "-check";
 		let count = 0;
 		let each = 0;
-		var allFilled = false;
+		let allFilled = false;
 	    $(this).find('input').each(function() {
 	    	each++;
 	    	if($(this).val() !== '' && $(this).val() !== null) {
@@ -462,9 +462,9 @@
 	});
 	
 	$('#choose-image-file').on('change', function() {
-		const file_kind = $(this).val().lastIndexOf('.');
-		const file_name = $(this).val().substring(file_kind+1, $(this).val().length);
-		const file_type = file_name.toLowerCase();
+		let file_kind = $(this).val().lastIndexOf('.');
+		let file_name = $(this).val().substring(file_kind+1, $(this).val().length);
+		let file_type = file_name.toLowerCase();
 
 		const check_file_type = ['jpg','gif','png','jpeg','bmp', ''];
 		if(check_file_type.indexOf(file_type)==-1){
@@ -486,10 +486,10 @@
 		    }
 		    
 		    // 이미지 서버 업로드 
-		    const form = new FormData();
+		    let form = new FormData();
 	        form.append( "upload", $("#choose-image-file")[0].files[0]);
 	        $.ajax({
-	            url : "/talent/image-upload",
+	            url : "/talents/image-upload",
 	         	type : "POST",
 	           	processData : false,
 	           	contentType : false,
@@ -512,7 +512,7 @@
 	ClassicEditor
 	.create(document.querySelector('#content-area'), {
 		ckfinder: {
-			uploadUrl : '/talent/image-upload'
+			uploadUrl : '/talents/image-upload'
 		}
 	})
 	.then(editor => {
@@ -552,7 +552,7 @@
 	let categoryList = null;
 	$(function(){
 		$.ajax({
-			url : "/talent/categorys",
+			url : "/categorys",
          	type : "GET",
            	dataType: 'json',
            	success:function(ajaxCategoryList) {
@@ -581,7 +581,7 @@
 	})
   
 	$('#upper-category-no').on("change", function() {
-  		const selectedCategoryNo = parseInt(this.value);
+  		let selectedCategoryNo = parseInt(this.value);
     	$('#lower-category-no').html('');
     	$('#lower-category-no').append($("<option disabled selected>").text("중분류 카테고리를 선택해 주세요."));
     	$('#category-check').attr('src', '/image/talentImage/white.png');

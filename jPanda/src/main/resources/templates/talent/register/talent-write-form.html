@@ -247,7 +247,7 @@
 	</div>
 	
 	<div class="insert-form-container">
-	<form action="/talent/talent" class="insert-form" method="post" name="frm" onsubmit="return check()">
+	<form action="/talents" class="insert-form" method="post" name="frm" onsubmit="return check()">
 		<h1 class="head">재능 등록</h1>
 		<hr class="talent-hr">
 		<input type="hidden" name="statusDate" id="status-date">
@@ -477,7 +477,7 @@
 		    const form = new FormData();
 	        form.append( "upload", $("#choose-image-file")[0].files[0]);
 	        $.ajax({
-	            url : "/talent/image-upload",
+	            url : "/talents/image-upload",
 	         	type : "POST",
 	           	processData : false,
 	           	contentType : false,
@@ -500,7 +500,7 @@
 	ClassicEditor
 	.create(document.querySelector('#content-textarea'), {
 		ckfinder: {
-			uploadUrl : '/talent/image-upload'
+			uploadUrl : '/talents/image-upload'
 		}
 	})
 	.then(editor => {
@@ -540,7 +540,7 @@
 	let categoryList = null;
 	$(function(){
 		$.ajax({
-			url : "/talent/categorys",
+			url : "/categorys",
          	type : "GET",
            	dataType: 'json',
            	success : function(ajaxCategoryList) {

@@ -1,6 +1,7 @@
 package com.kakao.jPanda.common.config;
 
 import java.io.File;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,10 +41,10 @@ public class WebMvcConfig implements WebMvcConfigurer{
     
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		String path = System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "uploadImage" + File.separator;
-		// path = /static/uploadImage
+		String path = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "static", "uploadImage").toString() + File.separator;
+		// path = /static/uploadImage/
 		registry.addResourceHandler("/uploadImage/**").addResourceLocations("file:" + path);
-		// /uploadImage/**로 시작하는 경로를 요청할 시 외부 디텍토리에서 찾도록 설정함
+		// /uploadImage/**로 시작하는 경로를 요청할 시 외부 디텍토리에서 찾도록 설정
 	}
 	
 }
