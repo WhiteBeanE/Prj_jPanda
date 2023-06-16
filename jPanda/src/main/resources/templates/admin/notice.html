@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="/common/layout/admin-layout">
+	layout:decorate="common/layout/admin-layout">
 
 <!-- 페이지 제목 입력 -->
 <th:block layout:fragment="title">
@@ -36,12 +36,12 @@ td {
 	padding:20px 0;
 }
 
-#btn-notice{
+.btn-notice{
 	border: 1px solid #198754;
 	float: right;
 }
 
-#btn-notice:hover{
+.btn-notice:hover{
 	background-color: #198754;
 	color: white;
 }
@@ -107,7 +107,7 @@ h2{
 }
 </style>
 	<!-- 채팅 기능이 필요없는 페이지는 아래 한줄 지워주세요  -->
-	<th:block th:replace="/common/style/chat-css :: chatCssFragment"></th:block>
+	<th:block th:replace="common/style/chat-css :: chatCssFragment"></th:block>
 </th:block>
 
 <div>
@@ -116,13 +116,13 @@ h2{
 			<h2 id="notice-main">공지사항</h2>
 			<div id="noticelistDiv">
 				<table id="noticeTable"></table>
-				<br><input type="button" class="btn" id="btn-notice" value="작성하기"><br>
+				<br><input type="button" class="btn-notice" id="btn-notice" value="작성하기"><br>
 			</div>
 			<div id="pagination"></div>
 		</body>
 
 		<!-- 채팅 기능이 필요없는 페이지는 아래 한줄 지워주세요  -->
-		<th:block th:replace="/common/fragment/chat :: chatFragment"></th:block>
+		<th:block th:replace="common/fragment/chat :: chatFragment"></th:block>
 	</th:block>
 </div>
 
@@ -237,6 +237,6 @@ h2{
 	</script>
 
 	<!-- 채팅 기능이 필요없는 페이지는 아래 한줄 지워주세요  -->
-	<th:block th:replace="/common/script/chat-js :: chatJsFragment"></th:block>
+	<th:block th:replace="common/script/chat-js :: chatJsFragment"></th:block>
 </th:block>
 </html>

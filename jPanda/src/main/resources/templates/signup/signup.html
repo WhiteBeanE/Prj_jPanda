@@ -38,9 +38,11 @@
                 },
                 success: function(response) {
                     alert("인증번호가 이메일로 전송되었습니다.");
+                    console.log("이메일 인증번호 전송 성공");
                 },
                 error: function() {
                     alert("이메일 인증번호 전송 실패");
+                    console.log("이메일 인증번호 전송 실패");
                 }
             });
         });
@@ -100,6 +102,7 @@
                     }
                 },
                 error: function(xhr, status, error) { // 서버와 통신 중 에러 발생 시 처리할 함수
+                    console.error(error); // 에러 로그 출력
                 }
             });
         });
@@ -138,6 +141,7 @@
     	const year = document.getElementById('signup-birth-yy').value;
     	const month = document.getElementById('signup-birth-mm').value;
     	let day = document.getElementById('signup-birth-dd').value;
+    	console.log(year + month + day);
 
     	// 생일 일자가 1에서 9 사이인 경우, 앞에 0을 추가하여 2자리 숫자로 변환
     	if (day >= 1 && day <= 9) {
@@ -145,6 +149,7 @@
     }
 
     	const birth = document.getElementById('birth');
+    	console.log(birth);
     	const birthText = year + month + day;
     	birth.value = birthText;
 	}

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="/common/layout/default-layout">
+      layout:decorate="common/layout/default-layout">
 
 <!-- 페이지 제목 입력 -->
 <th:block layout:fragment="title">
@@ -327,7 +327,7 @@ ul, li {
 
 </style>
 	<!-- 채팅 기능이 필요없는 페이지는 아래 한줄 지워주세요  -->
-	<th:block th:replace="/common/style/chat-css :: chatCssFragment"></th:block>
+	<th:block th:replace="common/style/chat-css :: chatCssFragment"></th:block>
 </th:block> 
 
 <div>
@@ -510,7 +510,7 @@ ul, li {
 	</div>
  
 		<!-- 채팅 기능이 필요없는 페이지는 아래 한줄 지워주세요  -->
-	<th:block th:replace="/common/fragment/chat :: chatFragment"></th:block>
+	<th:block th:replace="common/fragment/chat :: chatFragment"></th:block>
 	</th:block> 
 </div>
 <!-- 현재 화면에서만 사용하는 js -->
@@ -632,7 +632,7 @@ ul, li {
 	$(document).on('click', '#modify-btn', function(){
 		// talentNo 값 가져오기
 		var talentNo = $(this).data('talentno');
-		location.href = '/talents/' + talentNo + '/edit-form';
+		location.href = '/talent/talents/' + talentNo + '/update-form';
 	});
 
 
@@ -649,6 +649,7 @@ ul, li {
     			contentType : "application/json",
     		    dataType :'json',
     		    success : function(talentUpdate){
+    		    	console.log(talentUpdate);
     		    	if(talentUpdate === 1){
     		    		alert("게시물이 판매종료 되었습니다.");
     		    		location.href= "/board";
@@ -721,6 +722,8 @@ ul, li {
 		// 기존 리뷰의 내용을 가져와서 업데이트 폼에 채워주기
 	   	$('#update-content').val($(this).data('content'));
 	   	$('#review-no').val($(this).data('reviewno'));
+	   	console.log($(this).data('content'));
+	   	console.log($(this).data('reviewno'));
 	});
 
 
@@ -875,7 +878,7 @@ ul, li {
 
 	</script>
 		<!-- 채팅 기능이 필요없는 페이지는 아래 한줄 지워주세요  -->
-	<th:block th:replace="/common/script/chat-js :: chatJsFragment"></th:block>
+	<th:block th:replace="common/script/chat-js :: chatJsFragment"></th:block>
 </th:block> 
 </html>
 
