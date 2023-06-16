@@ -56,7 +56,7 @@ public class RegistTalentServiceImpl implements RegistTalentService{
 	}
 
 	@Override
-	public String modifyTalent(TalentDto talent, HttpSession session) {
+	public String modifyTalent(String talentNo, TalentDto talent, HttpSession session) {
 		String sellerId = findSellerIdByTalent(talent);
 		if(!sellerId.equals((String) session.getAttribute("memberId"))) {
 			return "<script>" +
@@ -102,9 +102,8 @@ public class RegistTalentServiceImpl implements RegistTalentService{
 		
 		// System.getProperty("user.dir")은 현재 프로젝트의 경로를 출력함
 		// File.separator는 파일 구분자로 /로 대체가 가능하지만 여러 운영 체제에서 이식성을 위해 사용
-		String path = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "static", "uploadImage").toString();
-
-		// 프로젝트상위경로/uploadImage/업로드할 이미지 파일 이름
+		String path = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "static", "uploadImage").toString() + File.separator;
+		// /static/uploadImage/업로드할 이미지 파일 이름
 		String savePath = path + newFileName;
 		
 		

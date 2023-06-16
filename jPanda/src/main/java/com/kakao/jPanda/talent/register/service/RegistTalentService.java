@@ -16,7 +16,7 @@ public interface RegistTalentService {
 	String 			addTalent(TalentDto talent, HttpSession session);
 	ModelAndView 	talentImageUpload(MultipartHttpServletRequest request);
 	TalentDto 		findTalentByTalentNo(Long talentNo);
-	String 			modifyTalent(TalentDto talent, HttpSession session);
+	String 			modifyTalent(String talentNo, TalentDto talent, HttpSession session);
 	List<TalentDto> findBestSellerTalents();
 	List<TalentDto> findTopRatedTalents();
 	List<TalentDto> findNewTrendTalents();

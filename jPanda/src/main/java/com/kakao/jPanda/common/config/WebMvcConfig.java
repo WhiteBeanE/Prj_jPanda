@@ -41,10 +41,10 @@ public class WebMvcConfig implements WebMvcConfigurer{
     
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
-		String path = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "static", "uploadImage").toString();
-		// path = /static/uploadImage
+		String path = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "static", "uploadImage").toString() + File.separator;
+		// path = /static/uploadImage/
 		registry.addResourceHandler("/uploadImage/**").addResourceLocations("file:" + path);
-		// /uploadImage/**로 시작하는 경로를 요청할 시 외부 디텍토리에서 찾도록 설정함
+		// /uploadImage/**로 시작하는 경로를 요청할 시 외부 디텍토리에서 찾도록 설정
 	}
 	
 }
