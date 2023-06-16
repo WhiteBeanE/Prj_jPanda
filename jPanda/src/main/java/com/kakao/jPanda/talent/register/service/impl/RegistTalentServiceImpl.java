@@ -102,9 +102,9 @@ public class RegistTalentServiceImpl implements RegistTalentService{
 		
 		// System.getProperty("user.dir")은 현재 프로젝트의 경로를 출력함
 		// File.separator는 파일 구분자로 /로 대체가 가능하지만 여러 운영 체제에서 이식성을 위해 사용
-		String path = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "static", "uploadImage").toString() + File.separator;
-//		int index = System.getProperty("user.dir").indexOf(File.separator + "jPanda");
-//		String path = System.getProperty("user.dir").substring(0, index) + File.separator + "uploadImage" + File.separator;
+//		String path = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "static", "uploadImage").toString() + File.separator;
+		int index = System.getProperty("user.dir").indexOf(File.separator + "jPanda");
+		String path = System.getProperty("user.dir").substring(0, index) + File.separator + "uploadImage" + File.separator;
 		// /static/uploadImage/업로드할 이미지 파일 이름
 		String savePath = path + newFileName;
 		
