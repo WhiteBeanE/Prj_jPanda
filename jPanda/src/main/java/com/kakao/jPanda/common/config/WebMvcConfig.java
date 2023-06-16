@@ -42,7 +42,7 @@ public class WebMvcConfig implements WebMvcConfigurer{
 	@Override
 	public void addResourceHandlers(ResourceHandlerRegistry registry) {
 //		String path = Paths.get(System.getProperty("user.dir"), "src", "main", "resources", "static", "uploadImage").toString() + File.separator;
-		String path = Paths.get(System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "uploadImage" + File.separator).toString();
+		String path = Paths.get(System.getProperty("user.dir")).toString() + File.separator + "src" + File.separator + "main" + File.separator + "resources" + File.separator + "static" + File.separator + "uploadImage" + File.separator;
 //		int index = System.getProperty("user.dir").indexOf(File.separator + "jPanda");
 //		String path = System.getProperty("user.dir").substring(0, index) + File.separator + "uploadImage" + File.separator;
 		// path = /static/uploadImage/
