@@ -230,7 +230,7 @@
     	}
 	</style>
 	<!-- 채팅 기능이 필요없는 페이지는 아래 한줄 지워주세요  -->
-	<th:block th:replace="/common/style/chat-css :: chatCssFragment"></th:block>
+	<th:block th:replace="common/style/chat-css :: chatCssFragment"></th:block>
 </th:block>
 
 <div>
@@ -346,7 +346,7 @@
 	</form>
 	</div> <!-- container -->
 		<!-- 채팅 기능이 필요없는 페이지는 아래 한줄 지워주세요  -->
-		<th:block th:replace="/common/fragment/chat :: chatFragment"></th:block>
+		<th:block th:replace="common/fragment/chat :: chatFragment"></th:block>
 	</th:block>
 </div>
 
@@ -513,6 +513,7 @@
         });
 	})
 	.catch(error => {
+		console.error(error);
 	});
 	
 	// 할인율 표시
@@ -557,6 +558,7 @@
 		    		location.replace(JSON.parse(xhr.responseText).redirectUrl);
 		    	}else {
 		    		alert('CategoryList Load Fail 다시 시도해주세요.');
+		    		console.error(xhr);
 		    	}
            	}
 		});
@@ -594,6 +596,6 @@
 	});
 	</script>
 	<!-- 채팅 기능이 필요없는 페이지는 아래 한줄 지워주세요  -->
-	<th:block th:replace="/common/script/chat-js :: chatJsFragment"></th:block>
+	<th:block th:replace="common/script/chat-js :: chatJsFragment"></th:block>
 </th:block>
 </html>
