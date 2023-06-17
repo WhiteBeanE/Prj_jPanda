@@ -19,16 +19,34 @@ public class NoticeServiceImpl implements NoticeService {
 	private final NoticeDao noticeDao;
 	
 	@Override
-	public Map<String, Object> findNoticeCountByPager(PagerDto pager) {
+	public Map<String, Object> findNoticesByPager(PagerDto pager) {
 		Map<String, Object> map = new HashMap<String, Object>();
 		int totalCount = noticeDao.selectNoticeCountByPager(pager);
-		pager.setTotalCount(totalCount);
+		pagerSetting(pager, totalCount);
 		List<NoticeDto> noticeList = findNoticeListByPager(pager);
 		
 		map.put("noticeList", noticeList);
 		map.put("pager", pager);
 		
 		return map;
+	}
+	
+	private void pagerSetting(PagerDto pager, int totalCount) {
+		int currentPage = pager.getCurrentPage();
+		int perPage = pager.getPerPage();
+		int pageBlock = pager.getPageBlock();
+		int startRow = (currentPage - 1) * perPage + 1;
+		int endRow = startRow + perPage - 1;
+		int totalPage = (int)Math.ceil((double)totalCount / perPage);
+		int startNum = currentPage - (currentPage - 1) % pageBlock;
+		int lastNum = startNum + pageBlock -1;
+		if(lastNum > totalPage) lastNum = totalPage;
+		
+		pager.setStartRow(startRow);
+		pager.setEndRow(endRow);
+		pager.setTotalPage(totalPage);
+		pager.setStartNum(startNum);
+		pager.setLastNum(lastNum);
 	}
 
 	private List<NoticeDto> findNoticeListByPager(PagerDto pager) {
@@ -40,5 +58,4 @@ public class NoticeServiceImpl implements NoticeService {
 		
 		return noticeDao.selectNoticeByNoticeNo(noticeNo);
 	}
-
 }

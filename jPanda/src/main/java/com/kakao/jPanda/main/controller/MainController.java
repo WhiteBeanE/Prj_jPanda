@@ -48,7 +48,7 @@ public class MainController {
 	@ResponseBody
 	@GetMapping("/notice/notices")
 	public Map<String, Object> noticeListBySearchAndCurrentPage(PagerDto pager) {
-		Map<String, Object> map = noticeService.findNoticeCountByPager(pager);
+		Map<String, Object> map = noticeService.findNoticesByPager(pager);
 		
 		return map;
 	}
