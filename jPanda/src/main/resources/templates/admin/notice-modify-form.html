@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-	layout:decorate="/common/layout/admin-layout">
+	layout:decorate="common/layout/admin-layout">
 
 <!-- 페이지 제목 입력 -->
 <th:block layout:fragment="title">
@@ -64,7 +64,7 @@ h2{
 }
 </style>
 	<!-- 채팅 기능이 필요없는 페이지는 아래 한줄 지워주세요  -->
-	<th:block th:replace="/common/style/chat-css :: chatCssFragment"></th:block>
+	<th:block th:replace="common/style/chat-css :: chatCssFragment"></th:block>
 </th:block>
 
 <div>
@@ -88,11 +88,11 @@ h2{
 						</td>
 					</tr>
 				</table>
-				<input type="submit" class="btn btn-notice" value="수정완료">
+				<input type="submit" class="btn" value="수정완료">
 			</form>
 		</body>
 		<!-- 채팅 기능이 필요없는 페이지는 아래 한줄 지워주세요  -->
-		<th:block th:replace="/common/fragment/chat :: chatFragment"></th:block>
+		<th:block th:replace="common/fragment/chat :: chatFragment"></th:block>
 	</th:block>
 </div>
 
@@ -103,6 +103,6 @@ h2{
 	</script>
 
 	<!-- 채팅 기능이 필요없는 페이지는 아래 한줄 지워주세요  -->
-	<th:block th:replace="/common/script/chat-js :: chatJsFragment"></th:block>
+	<th:block th:replace="common/script/chat-js :: chatJsFragment"></th:block>
 </th:block>
 </html>

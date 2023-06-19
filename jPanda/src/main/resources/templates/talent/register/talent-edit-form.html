@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="/common/layout/default-layout">
+      layout:decorate="common/layout/default-layout">
 <!-- 페이지 제목 입력 -->
 <th:block layout:fragment="title">
 	<title>재능 수정</title>
@@ -232,7 +232,7 @@
     	}
 	</style>
 	<!-- 채팅 기능이 필요없는 페이지는 아래 한줄 지워주세요  -->
-	<th:block th:replace="/common/style/chat-css :: chatCssFragment"></th:block>
+	<th:block th:replace="common/style/chat-css :: chatCssFragment"></th:block>
 </th:block>
 <div>
 	<script th:inline="javascript">
@@ -260,7 +260,7 @@
 			<hr class="talent-hr">
 			<input type="hidden" name="talentNo" th:value="${talent.talentNo}">
 			<input type="hidden" name="statusDate" id="status-date">
-		
+			
 			<div id="category" class="category write-check">
 				<div class="essential-div">
 					<h4  class="talent-h4">카테고리</h4>
@@ -355,7 +355,7 @@
 		</form>
 		</div> <!-- container -->
 		<!-- 채팅 기능이 필요없는 페이지는 아래 한줄 지워주세요  -->
-		<th:block th:replace="/common/fragment/chat :: chatFragment"></th:block>
+		<th:block th:replace="common/fragment/chat :: chatFragment"></th:block>
 	</th:block>
 </div>
 
@@ -368,7 +368,7 @@
     $('#writeCheck tr').on('click', function() {
     	location.href = $(this).data('href');
     });
-	
+
     function getNow(){
     	const now = new Date(Date.now());
     	const year = now.getFullYear();
@@ -403,13 +403,13 @@
    	 	if($('#main-img-value') == null || $('#main-img-value') == ''){
 	  		$('#main-img-value').val('/image/common/no-img.png');
 	  	}
-   	 	$('#status-date').val(getNow());
+   	 $('#status-date').val(getNow());
    	  	return isReadyToSubmit;
    	}
 	
  // 사이드바 체크
 	$('.write-check').on('input', function(){
-		let check = '#' + $(this).attr('id') + "-check";
+		const check = '#' + $(this).attr('id') + "-check";
 		let count = 0;
 		let each = 0;
 		let allFilled = false;
@@ -462,9 +462,9 @@
 	});
 	
 	$('#choose-image-file').on('change', function() {
-		let file_kind = $(this).val().lastIndexOf('.');
-		let file_name = $(this).val().substring(file_kind+1, $(this).val().length);
-		let file_type = file_name.toLowerCase();
+		const file_kind = $(this).val().lastIndexOf('.');
+		const file_name = $(this).val().substring(file_kind+1, $(this).val().length);
+		const file_type = file_name.toLowerCase();
 
 		const check_file_type = ['jpg','gif','png','jpeg','bmp', ''];
 		if(check_file_type.indexOf(file_type)==-1){
@@ -486,7 +486,7 @@
 		    }
 		    
 		    // 이미지 서버 업로드 
-		    let form = new FormData();
+		    const form = new FormData();
 	        form.append( "upload", $("#choose-image-file")[0].files[0]);
 	        $.ajax({
 	            url : "/talents/image-upload",
@@ -525,6 +525,7 @@
         });
 	})
 	.catch(error => {
+		console.error(error);
 	});
 	
 	// 가격 할인율 표시
@@ -581,7 +582,7 @@
 	})
   
 	$('#upper-category-no').on("change", function() {
-  		let selectedCategoryNo = parseInt(this.value);
+  		const selectedCategoryNo = parseInt(this.value);
     	$('#lower-category-no').html('');
     	$('#lower-category-no').append($("<option disabled selected>").text("중분류 카테고리를 선택해 주세요."));
     	$('#category-check').attr('src', '/image/talentImage/white.png');
@@ -612,6 +613,6 @@
 	});
 	</script>
 	<!-- 채팅 기능이 필요없는 페이지는 아래 한줄 지워주세요  -->
-	<th:block th:replace="/common/script/chat-js :: chatJsFragment"></th:block>
+	<th:block th:replace="common/script/chat-js :: chatJsFragment"></th:block>
 </th:block>
 </html>

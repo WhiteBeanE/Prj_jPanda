@@ -46,6 +46,7 @@
 						    url: '/logout',
 						    type: 'DELETE',
 						    success: function(response) {
+								console.log(response);
 						    	location.href='/main';
 								
 						    }
@@ -66,9 +67,11 @@
 					dataType: "text",
 					data: {memberId : memberId},
 					success: function(foundTotalBambooStr){
+						console.log("Ajax success foundTotalBambooStr : " + foundTotalBambooStr);
 						$('#total-bamboo').html(foundTotalBambooStr);	
 					},
 					error: function(){
+						console.error("total-bamboo function error");
 					}
 				});    
 			}
@@ -76,6 +79,7 @@
 		// 검색 기능
 		$('#search-btn').on('click', function(){
 			var searchValue = encodeURIComponent($('#search').val());
+			console.log("searchValue -> " + searchValue);
 			location.href = "/board?search=" + searchValue;
 		});
 		// 통합검색 EnterKey 입력 시 검색 기능
