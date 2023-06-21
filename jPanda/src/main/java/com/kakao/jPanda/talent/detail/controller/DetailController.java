@@ -30,14 +30,13 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/talents")
 public class DetailController {
 
 	private final TalentService talentService;
 	
 	// 재능 상세페이지 및 리뷰 리스트 불러오기
 	@NoLoginCheck
-	@GetMapping("/talent/{talentNo}")  //s
+	@GetMapping("/talents/{talentNo}/detail")
 	public String talentDetails(@PathVariable Long talentNo, Model model, HttpSession session) {
 		log.info("Controller talentDetails Start");
 		// 조회수 업데이트
@@ -59,7 +58,7 @@ public class DetailController {
 	
 	// 리뷰 인서트
 	@ResponseBody
-	@PostMapping("/talent/{talentNo}/review") //s
+	@PostMapping("/talents/{talentNo}/review")
 	public int reviewAdd(@RequestBody ReviewDto review) {
 		log.info("Controller reviewAdd Start");
 		log.info("reviewInfo : " + review);
@@ -73,7 +72,7 @@ public class DetailController {
 	
 	// 리뷰 업데이트
 	@ResponseBody
-	@PutMapping("/talent/{talentNo}/reviews/{reviewNo}") //s
+	@PutMapping("/talents/{talentNo}/reviews/{reviewNo}")
 	public List<ReviewDto> reviewModify(@PathVariable("talentNo") Long talentNo, @PathVariable("reviewNo") Long reviewNo, 
 							   @RequestBody ReviewDto review) {
 		log.info("Controller reviewModify Start");
@@ -87,7 +86,7 @@ public class DetailController {
 	
 	// 리뷰 딜리트
 	@ResponseBody
-	@DeleteMapping("/talent/{talentNo}/reviews/{reviewNo}") //s
+	@DeleteMapping("/talents/{talentNo}/reviews/{reviewNo}")
 	public int reviewRemove(@RequestBody ReviewDto review) {
 		log.info("Controller reviewRemove Start");
 		
@@ -100,7 +99,7 @@ public class DetailController {
 	
 	// 게시글 상태 판매 종료로 전환
 	@ResponseBody
-	@PutMapping("/talent/{talentNo}/status")  //s
+	@PutMapping("/talents/{talentNo}/status")
 	public int talentStatusModify(@PathVariable Long talentNo) {
 		log.info("Controller talentStatusModify Start");
 		
@@ -113,7 +112,7 @@ public class DetailController {
 	
 	// 구매하기 버튼 인서트              
 	@ResponseBody
-	@PostMapping("/bambooUse") // /BambooUse
+	@PostMapping("/talents/{talentNo}/buy")
 	public int purchaseAdd(@RequestBody BambooUseDto bambooUse) {
 		log.info("Controller purchaseAdd Start");
 		
@@ -129,7 +128,7 @@ public class DetailController {
 	
 	// 신고하기 
 	@ResponseBody
-	@PostMapping("/talent/{talentNo}/report")  //s
+	@PostMapping("/talents/{talentNo}/report")
 	public String reportAdd(@PathVariable Long talentNo, @RequestParam("reportId")String reportId, @RequestParam("blackId")String blackId, 
 					     @RequestParam("issue")String issue, @RequestParam("reportDate") Timestamp reportDate) {
 		log.info("Controller reportAdd Start");

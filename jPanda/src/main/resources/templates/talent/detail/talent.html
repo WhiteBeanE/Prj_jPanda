@@ -538,7 +538,7 @@ ul, li {
 		  	reportModal.querySelector('#blackId').value = blackId
 		  	reportModal.querySelector('#title').value = title
 		  	reportModal.querySelector('#issue').value = issue.value
-		  	reportModal.querySelector('form').setAttribute('action', "/talents/talent/" + talentNo + "/report");
+		  	reportModal.querySelector('form').setAttribute('action', "/talents/" + talentNo + "/report");
 		  	const cancelButton = reportModal.querySelector('.cancel-btn')
 		  	cancelButton.addEventListener('click', () => {
 			    reportModal.querySelector('form').reset()
@@ -565,7 +565,7 @@ ul, li {
 		        purchaseDate : new Date(Date.now())
 		    };
 			$.ajax({
-				url 	: "/talents/bambooUse",
+				url 	: "/talents/" + talentNo + "buy",
 				method 	: 'POST',
 				data  	: JSON.stringify(bambooUse),
 				contentType: 'application/json',
@@ -642,7 +642,7 @@ ul, li {
 	    	var talentNo = $(this).data('talentno');
 	    	$.ajax({
 	    		type : 'PUT',
-	    		url  : "/talents/talent/" + talentNo + "/status",
+	    		url  : "/talents/" + talentNo + "/status",
 	    		data : JSON.stringify({
 	    			talentNo : talentNo
 	    		}),
@@ -689,7 +689,7 @@ ul, li {
 		} 
 		$.ajax({
 		    type : 'POST',
-		    url : "/talents/talent/" + talentNo + "/review",
+		    url : "/talents/" + talentNo + "/review",
 		    data : JSON.stringify({
 				talentNo 	: talentNo,
 				reviewerId  : memberId,
@@ -737,7 +737,7 @@ ul, li {
 		
 	  	$.ajax({
 	  		type : 'PUT',
-	  		url : "/talents/talent/" + talentNo + "/reviews/" + reviewNo,
+	  		url : "/talents/" + talentNo + "/reviews/" + reviewNo,
 			data : JSON.stringify({
 				talentNo 	: talentNo,
 			    reviewNo 	: reviewNo,
@@ -791,7 +791,7 @@ ul, li {
 	  	if (confirm('리뷰를 삭제하시겠습니까?')) {
 		    $.ajax({
 				type : 'DELETE',
-				url : "/talents/talent/" + talentNo + "/reviews/" + reviewNo,
+				url : "/talents/" + talentNo + "/reviews/" + reviewNo,
 				data : JSON.stringify({
 					reviewNo : reviewNo,
 					talentNo : talentNo
