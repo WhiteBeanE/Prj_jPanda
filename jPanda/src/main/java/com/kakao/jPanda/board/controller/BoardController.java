@@ -63,7 +63,7 @@ public class BoardController {
 	// 중분류 카테고리를 불러오는 리스트
 	@NoLoginCheck
 	@ResponseBody
-	@GetMapping("/categorys/lower-category-nos") 
+	@GetMapping("/categorys/lower") 
 	public List<CategoryDto> lowerCategoryListByUpperCategoryNo(@RequestParam Long upperCategoryNo) {
 		log.info("Controller lowerCategoryListByUpperCategoryNo Start");
 		

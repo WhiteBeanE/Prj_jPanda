@@ -387,7 +387,7 @@ ul, li {
 						}
 					});
 		            li.click(function() {
-		                location.href = '/talents/talent/' + talent.talentNo;
+		                location.href = '/talents/' + talent.talentNo + '/detail';
 		            });
 		        });
 	 	       	
@@ -453,7 +453,7 @@ ul, li {
 		$(this).addClass('selected');
 		// 중분류 카테고리 리스트 불러오기
 		$.ajax({
-			url : "/board/categorys/lower-category-nos",
+			url : "/board/categorys/lower",
 		    type : 'GET',
 		   	data : {upperCategoryNo : $('.selected').data('uppercategoryno')},
 		   	dataType : 'json',
