@@ -278,6 +278,7 @@ h2{
 			data : JSON.stringify(talentDto),
 			success : function(result) {
 				if(result > 0) {
+					// PATCH가 성공하면 웹소켓으로 데이터를 보냄
 					webSocket.send(JSON.stringify(talentDto));
 					alert("성공적으로 반영되었습니다");
 					location.href="/admin/talent";

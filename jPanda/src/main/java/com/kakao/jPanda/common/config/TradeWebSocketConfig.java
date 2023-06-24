@@ -28,6 +28,8 @@ public class TradeWebSocketConfig implements WebSocketConfigurer{
 	@Override
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
 		log.info("registerWebSocketHandlers");
+		// TradeWebSocketHandler를 /trade-ws 경로에 등록하고, TradeWebSocketInterceptor를 인터셉터로 추가
+		// tradeWebSocketInterceptor가 먼저 실행됨
 		registry.addHandler(tradeWebSocketHandler, "/trade-ws").addInterceptors(tradeWebSocketInterceptor);
 	}
 
