@@ -410,6 +410,7 @@
 		//추후에 구독알림식으로 변경
 		//alert("거래정보가 갱신되었습니다.");
 		
+		// handleMessage에서 처리된 값을 받음
 		let tradeInfos = JSON.parse(message.data);
 		
 		updateList($('#selected-filter').val())
