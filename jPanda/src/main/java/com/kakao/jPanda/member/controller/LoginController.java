@@ -31,34 +31,34 @@ public class LoginController {
 	
 	private final MemberService memberservice;
 
-	@NoLoginCheck
+	
     @GetMapping("/login")
     public String login(Model model) {
         return "login/login";
     }
 	
-    @NoLoginCheck
-    @PostMapping("/login")
-    public String login(@ModelAttribute MemberDto memberDto, HttpSession session,RedirectAttributes redirectAttributes) {
-    	boolean loginResult = memberservice.login(memberDto);
-    	if(loginResult) {
-    		session.setAttribute("memberId", memberDto.getMemberId());
-    		String memberId = (String) session.getAttribute("memberId");   		
-            MemberDto member = memberservice.findMember(memberId);
-            log.info("[login] member {}", member);
-            if(memberId.equals("admin")) {
-            	return "redirect:/admin";
-            } 
-           
-            redirectAttributes.addFlashAttribute("memberInfo", member);
-    		return "redirect:/main";
-    	}else {
-    		redirectAttributes.addFlashAttribute("alertMsg", "로그인 할 수 없습니다.");
-    		return "redirect:/login";
-    	}
-    }
+//    
+//    @PostMapping("/login")
+//    public String login(@ModelAttribute MemberDto memberDto, HttpSession session,RedirectAttributes redirectAttributes) {
+//    	boolean loginResult = memberservice.login(memberDto);
+//    	if(loginResult) {
+//    		session.setAttribute("memberId", memberDto.getMemberId());
+//    		String memberId = (String) session.getAttribute("memberId");   		
+//            MemberDto member = memberservice.findMember(memberId);
+//            log.info("[login] member {}", member);
+//            if(memberId.equals("admin")) {
+//            	return "redirect:/admin";
+//            } 
+//           
+//            redirectAttributes.addFlashAttribute("memberInfo", member);
+//    		return "redirect:/main";
+//    	}else {
+//    		redirectAttributes.addFlashAttribute("alertMsg", "로그인 할 수 없습니다.");
+//    		return "redirect:/login";
+//    	}
+//    }
     
-    @NoLoginCheck
+    
     @ResponseBody
     @DeleteMapping("/logout")
     public String logout(HttpSession session) {
@@ -66,13 +66,13 @@ public class LoginController {
         return "Logout success";
     }
 	
-	@NoLoginCheck
+	
     @GetMapping("/find")
     public String find(Model model) {
     	return "login/find";
     }
 
-	@NoLoginCheck
+	
     @GetMapping("/findid")
     public ResponseEntity<String> findIdByNameAndEmail(@RequestParam String name, @RequestParam String email) {
         String memberId = memberservice.findIdByNameAndEmail(name, email);
@@ -84,7 +84,7 @@ public class LoginController {
             return new ResponseEntity<String>("아이디 : "+ "[ "+hiddenId+" ]" , HttpStatus.OK);
         }
     }
-    @NoLoginCheck
+    
     @GetMapping("/findpw")
     @ResponseBody
     public ResponseEntity<String> findPwByIdAndEmail(@RequestParam String memberId, @RequestParam String email) {

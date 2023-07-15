@@ -25,7 +25,7 @@ public class MainController {
 	private final NoticeService noticeService;
 	
 	// 메인 페이지 이동
-	@NoLoginCheck
+	
 	@GetMapping("/main")
 	public String main(Model model) {
 		model.addAttribute("bestSellerTalent", registTalentService.findBestSellerTalents());
@@ -37,14 +37,14 @@ public class MainController {
 	}	
 	
 	// 공지사항 페이지 이동
-	@NoLoginCheck
+	
 	@GetMapping("/main/notice") 
 	public String notice() {
 		return "main/notice";
 	}
 	
 	// 공지사항 불러오기
-	@NoLoginCheck
+	
 	@ResponseBody
 	@GetMapping("/notice/notices")
 	public Map<String, Object> noticeListBySearchAndCurrentPage(PagerDto pager) {
@@ -54,7 +54,7 @@ public class MainController {
 	}
 	
 	// 공지사항 세부 페이지
-	@NoLoginCheck
+	
 	@GetMapping("/notices/{noticeNo}")
 	public String noticeDetailByNoticeNo(@PathVariable Long noticeNo, Model model) {
 		NoticeDto notice = noticeService.findNoticeByNoticeNo(noticeNo);

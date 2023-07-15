@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.kakao.jPanda.board.domain.CategoryDto;
 import com.kakao.jPanda.board.domain.FiltersDto;
 import com.kakao.jPanda.board.service.BoardService;
-import com.kakao.jPanda.common.annotation.NoLoginCheck;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -28,9 +27,7 @@ public class BoardController {
 	
 	private final BoardService boardService;
 	
-	
 	// 재능 리스트 불러오기 (필터 통합)
-	@NoLoginCheck
 	@ResponseBody
 	@GetMapping("/talents")
 	public HashMap<String, Object> talentList(FiltersDto filters){
@@ -43,7 +40,6 @@ public class BoardController {
 	
 	
 	// 대분류 카테고리 리스트 불러오기
-	@NoLoginCheck
 	@GetMapping("")
 	public String boardView(@RequestParam(required=false) String search, Model model) {
 		log.info("Controller boardList Start");
@@ -61,7 +57,6 @@ public class BoardController {
 	
 	
 	// 중분류 카테고리를 불러오는 리스트
-	@NoLoginCheck
 	@ResponseBody
 	@GetMapping("/categorys/lower") 
 	public List<CategoryDto> lowerCategoryListByUpperCategoryNo(@RequestParam Long upperCategoryNo) {

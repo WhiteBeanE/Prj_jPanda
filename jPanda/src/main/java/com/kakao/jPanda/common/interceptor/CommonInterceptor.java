@@ -12,7 +12,7 @@ import com.kakao.jPanda.common.annotation.NoLoginCheck;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Component
+//@Component
 @Slf4j
 public class CommonInterceptor implements HandlerInterceptor, AsyncHandlerInterceptor{
 	@Override

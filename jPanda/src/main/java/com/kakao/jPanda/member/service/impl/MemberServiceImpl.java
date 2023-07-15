@@ -1,8 +1,5 @@
 package com.kakao.jPanda.member.service.impl;
 
-
-
-
 import java.util.List;
 
 import org.springframework.mail.SimpleMailMessage;
@@ -136,6 +133,11 @@ public class MemberServiceImpl implements MemberService {
         message.setText(body);
         mailSender.send(message);
     }
+
+	@Override
+	public MemberDto findMemberByMemberId(String memberId) {
+		return memberDao.selectMemberBtMemberId(memberId);
+	}
 
 	
 }

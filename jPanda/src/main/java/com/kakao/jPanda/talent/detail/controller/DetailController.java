@@ -35,7 +35,7 @@ public class DetailController {
 	private final TalentService talentService;
 	
 	// 재능 상세페이지 및 리뷰 리스트 불러오기
-	@NoLoginCheck
+	
 	@GetMapping("/talents/{talentNo}/detail")
 	public String talentDetails(@PathVariable Long talentNo, Model model, HttpSession session) {
 		log.info("Controller talentDetails Start");
