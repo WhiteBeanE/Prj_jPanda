@@ -36,4 +36,6 @@ public interface MemberService {
 	
 	void sendEmail(String to, String subject, String body);
 
+	MemberDto findMemberByMemberId(String memberId);
+
 }

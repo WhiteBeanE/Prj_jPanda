@@ -78,5 +78,11 @@
 		FROM email_verif
 		WHERE email=#{email} AND verif_code=#{verifCode}
 	</select>
+	<select id="selectMemberBtMemberId" resultType="MemberDto" parameterType="String">
+		SELECT 	*
+		FROM 	member
+		WHERE	member_id = #{memberId}
+	
+	</select>
 	
 </mapper>

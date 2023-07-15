@@ -18,20 +18,20 @@ import com.kakao.jPanda.common.interceptor.CommonInterceptor;
 @Configuration
 public class WebMvcConfig implements WebMvcConfigurer{
 	
-	@Autowired
-	private CommonInterceptor commonInterceptor;
-	@Autowired
-	private AdminInterceptor adminInterceptor;
-	
-	@Override
-	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(commonInterceptor)
-				.addPathPatterns("/**")
-				.excludePathPatterns("");
-		
-		registry.addInterceptor(adminInterceptor)
-				.addPathPatterns("/admin/**");
-	}
+//	@Autowired
+//	private CommonInterceptor commonInterceptor;
+//	@Autowired
+//	private AdminInterceptor adminInterceptor;
+//	
+//	@Override
+//	public void addInterceptors(InterceptorRegistry registry) {
+//		registry.addInterceptor(commonInterceptor)
+//				.addPathPatterns("/**")
+//				.excludePathPatterns("");
+//		
+//		registry.addInterceptor(adminInterceptor)
+//				.addPathPatterns("/admin/**");
+//	}
 	
 	
     @Override

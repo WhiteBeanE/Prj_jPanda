@@ -32,6 +32,8 @@ public interface MemberDao {
 
 	public EmailVerifDto selectEmailVerif(EmailVerifDto emailVerifDto);
 
+	public MemberDto selectMemberBtMemberId(String memberId);
+
 
 	
 }	

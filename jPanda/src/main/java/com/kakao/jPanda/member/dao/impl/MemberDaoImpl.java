@@ -112,4 +112,9 @@ public class MemberDaoImpl implements MemberDao {
 		return selectEmailVerifDto;
 	}
 
+	@Override
+	public MemberDto selectMemberBtMemberId(String memberId) {
+		return sqlSession.selectOne("selectMemberBtMemberId", memberId);
+	}
+
 }

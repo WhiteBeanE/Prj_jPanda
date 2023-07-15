@@ -9,7 +9,7 @@ import org.springframework.web.servlet.HandlerInterceptor;
 
 import lombok.extern.slf4j.Slf4j;
 
-@Component
+//@Component
 @Slf4j
 public class AdminInterceptor implements HandlerInterceptor, AsyncHandlerInterceptor{
 	

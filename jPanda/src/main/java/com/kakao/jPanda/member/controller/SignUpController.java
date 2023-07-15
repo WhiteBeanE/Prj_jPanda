@@ -29,7 +29,7 @@ public class SignUpController {
 	
 	private final MemberService memberservice;
 	
-	@NoLoginCheck
+	
     @GetMapping("/signup")
     public String signupForm(Model model) {
  	    List<BankDto> foundBankList = memberservice.findBankList();
@@ -37,7 +37,7 @@ public class SignUpController {
     	return "signup/signup";
     }
 
-	@NoLoginCheck
+	
 	@PostMapping("/members/signup")
 	public String join(MemberDto memberInfo) {
 	    boolean isJoinSuccessful = memberservice.joinMember(memberInfo);
@@ -53,7 +53,7 @@ public class SignUpController {
 	    }
 	}
 	
-	@NoLoginCheck
+	
     @GetMapping("/members/id/id")
     @ResponseBody
     public Map<String, String> checkId(@RequestParam String memberId) {
@@ -88,7 +88,7 @@ public class SignUpController {
 	
 	}
 	
-    @NoLoginCheck
+    
     @PostMapping("/sendVerificationCode")
     @ResponseBody
     public ResponseEntity<String> sendVerificationCode(@RequestParam("email") String email) {
@@ -109,7 +109,7 @@ public class SignUpController {
         
     }
     
-    @NoLoginCheck
+    
     @GetMapping("/verifyCode")
     @ResponseBody
     public ResponseEntity<String> verifyCode(EmailVerifDto emailVerifDto) {
