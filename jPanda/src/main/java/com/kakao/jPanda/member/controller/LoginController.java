@@ -59,12 +59,12 @@ public class LoginController {
 //    }
     
     
-    @ResponseBody
-    @DeleteMapping("/logout")
-    public String logout(HttpSession session) {
-        session.invalidate();
-        return "Logout success";
-    }
+//    @ResponseBody
+//    @DeleteMapping("/logout")
+//    public String logout(HttpSession session) {
+//        session.invalidate();
+//        return "Logout success";
+//    }
 	
 	
     @GetMapping("/find")
