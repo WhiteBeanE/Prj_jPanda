@@ -34,7 +34,7 @@ public class SecurityConfig{
 			    	.and()
 					//인증 허용 범위 설정
 					.authorizeRequests() //  요청에 대한 인가를 설정
-						.antMatchers("/uploadImage/**").permitAll() //static resources 인증 제외
+						.antMatchers("/uploadImage/**", "/image/**").permitAll() //static resources 인증 제외
 						.antMatchers("/", "/login", "/logout", "/find", "/findid", "/findpw", "/signup", "/members/signup", 
 								"/members/id/id", "/sendVerificationCode", "/verifyCode", "/main",
 								"/main/notice", "/notice/notices", "/notices/**", "/talents/*/detail",
@@ -61,7 +61,7 @@ public class SecurityConfig{
 					//로그아웃 설정	
 					.logout()
 						.logoutUrl("/logout")
-						.logoutSuccessUrl("/");
+						.logoutSuccessUrl("/main");
 		
 		return httpSecurity.build();
 	}

@@ -31,7 +31,9 @@ public class UserLoginSuccessHandler implements AuthenticationSuccessHandler{
 		String redirectUrl = "/";
 		//인증성공한 member의 정보를 session에 set 해주기 위한 객체
 		UserDetailsDto memberInfo = (UserDetailsDto) authentication.getPrincipal();
-		
+		if(memberInfo.getMemberDto().getMemberId().equals("admin")) {
+			redirectUrl = "/admin";
+		}
 		//권한인증 실패로 인한 로그인인 경우
 		if (savedRequest != null) {
 			//Security가 요청을 가로채기 전 url로 redirect
