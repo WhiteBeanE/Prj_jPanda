@@ -39,19 +39,20 @@
 				var liElement2 = $("<li></li>");
 				var aElement2 = $("<a></a>", {
 					class: "dropdown-item",
+					href: "/logout",
 					text: "로그아웃"
 				});
-				aElement2.on('click', function() {
+				/* aElement2.on('click', function() {
 					 $.ajax({
 						    url: '/logout',
-						    type: 'DELETE',
+						    type: 'POST',
 						    success: function(response) {
 								console.log(response);
-						    	location.href='/main';
+								location.reload();
 								
 						    }
 						  });
-				});
+				}); */
 				liElement2.append(aElement2);
 				$(".dropdown-menu").append(liElement2);
 			}
