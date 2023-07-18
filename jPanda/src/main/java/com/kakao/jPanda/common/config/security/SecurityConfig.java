@@ -10,6 +10,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -23,7 +24,8 @@ public class SecurityConfig{
 	private AuthenticationFailureHandler userLoginFailureHandler;
 	@Autowired // 인증된 사용자가 요청에 접근할 수 없을 때 호출되는 핸들러
 	private AccessDeniedHandler customAccessDeniedHandler;
-	
+	@Autowired
+	private SessionIdFilter sessionFilter;
 	@Bean
 	public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception{
 		
@@ -36,8 +38,8 @@ public class SecurityConfig{
 					.authorizeRequests() //  요청에 대한 인가를 설정
 						.antMatchers("/uploadImage/**", "/image/**").permitAll() //static resources 인증 제외
 						.antMatchers("/", "/login", "/logout", "/find", "/findid", "/findpw", "/signup", "/members/signup", 
-								"/members/id/id", "/sendVerificationCode", "/verifyCode", "/main",
-								"/main/notice", "/notice/notices", "/notices/**", "/talents/*/detail",
+								"/members/id/id", "/sendVerificationCode", "/verifyCode", "/main/**",
+								"/notice/notices", "/notices/**", "/talents/*/detail",
 								"/board/**").permitAll()
 						.antMatchers("/admin/**").hasAnyRole("ADMIN")
 						.anyRequest().authenticated()
@@ -61,7 +63,9 @@ public class SecurityConfig{
 					//로그아웃 설정	
 					.logout()
 						.logoutUrl("/logout")
-						.logoutSuccessUrl("/main");
+						.logoutSuccessUrl("/main")
+						.and()
+					.addFilterBefore(sessionFilter, UsernamePasswordAuthenticationFilter.class);
 		
 		return httpSecurity.build();
 	}

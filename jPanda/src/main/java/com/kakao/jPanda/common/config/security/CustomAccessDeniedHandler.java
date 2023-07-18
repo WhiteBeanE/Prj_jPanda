@@ -25,7 +25,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 		log.info("[handle] accessDeniedException : {}", accessDeniedException.getMessage());
 		RequestCache requestCache = new HttpSessionRequestCache();
 		SavedRequest savedRequest = requestCache.getRequest(request, response);
-		String defaultUrl = "/login";
+		String defaultUrl = "/logout";
 		
 		if (savedRequest != null) {
 			String prevUrl = savedRequest.getRedirectUrl();
